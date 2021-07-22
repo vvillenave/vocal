@@ -482,8 +482,8 @@ namespace Vocal {
                             _ ("Are you sure you want to delete the downloaded files for the selected episodes?")
                         );
 
-                        msg.add_button ("_No", Gtk.ResponseType.CANCEL);
-                        Gtk.Button delete_button = (Gtk.Button) msg.add_button ("_Yes", Gtk.ResponseType.YES);
+                        msg.add_button (_("_No"), Gtk.ResponseType.CANCEL);
+                        Gtk.Button delete_button = (Gtk.Button) msg.add_button (_("_Yes"), Gtk.ResponseType.YES);
                         delete_button.get_style_context ().add_class ("destructive-action");
 
                         var image = new Gtk.Image.from_icon_name ("dialog-question", Gtk.IconSize.DIALOG);
@@ -745,7 +745,7 @@ namespace Vocal {
                     } else {
                         boxes.insert(0, current_episode_box);
                     }
-                    
+
                     // Determine whether or not the episode has been played
                     if (current_episode.status == EpisodeStatus.UNPLAYED) {
                         unplayed_count++;
@@ -756,7 +756,7 @@ namespace Vocal {
                     listbox.add (box);
                     box.show_all ();
                 }
-                
+
             } else {
                 // Otherwise, simply create a new label to tell user that the feed is empty
                 var empty_label = new Gtk.Label (_ ("No episodes available."));
@@ -870,7 +870,7 @@ namespace Vocal {
         public void set_unplayed_text () {
             string count_string = null;
             if (unplayed_count > 0) {
-                count_string = _ ("%d unplayed episodes".printf (unplayed_count));
+                count_string = _ ("%d unplayed episodes").printf (unplayed_count);
             } else {
                 count_string = "";
             }

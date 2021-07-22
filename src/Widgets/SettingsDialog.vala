@@ -283,7 +283,7 @@ namespace Vocal {
             content_box.add (archive_secret_key_label);
             content_box.add (archive_secret_key_entry);
 
-            var close_button = new Gtk.Button.with_label (_ ("Close"));
+            var close_button = new Gtk.Button.with_label (_ ("_Close"));
             close_button.clicked.connect (() => {
                 destroy ();
             });

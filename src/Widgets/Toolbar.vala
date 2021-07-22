@@ -65,8 +65,8 @@ namespace Vocal {
         public Toolbar (VocalSettings settings, bool? first_run = false, bool? on_elementary = Utils.check_elementary ()) {  // vala-lint=line-length
 
             this.settings = settings;
-            
-			
+
+
             // Create the box to be shown during playback
             playback_box = new PlaybackBox ();
 
@@ -88,7 +88,7 @@ namespace Vocal {
                 new_episodes_button = new Gtk.Button.from_icon_name ("starred-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
             }
             new_episodes_button.tooltip_text = _ ("New Episodes");
-            
+
             // Create the menus and menuitems
             menu = new Gtk.Menu ();
 
@@ -127,9 +127,9 @@ namespace Vocal {
                 }
                 theme_toggled ();
             });
-            
+
             var sync_dialog_item = new Gtk.MenuItem.with_label (_("Library Synchronization"));
-            
+
             // Set refresh and export insensitive if there isn't a library to export
             if (first_run) {
                 //refresh_item.sensitive = false;
@@ -148,7 +148,7 @@ namespace Vocal {
             export_item.activate.connect (() => {
                 export_selected ();
             });
-            
+
             menu.add (check_for_updates);
             menu.add (new Gtk.SeparatorMenuItem ());
             menu.add (add_feed_item);
@@ -204,9 +204,9 @@ namespace Vocal {
             hide_playback_box ();
 
             this.show_close_button = true;
-            
+
             // Left-hand controls
-            
+
             var left_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
             // Create new icons for placback functions and downloads
@@ -237,7 +237,7 @@ namespace Vocal {
         	}
             forward.hexpand = true;
             forward.halign = Gtk.Align.START;
-            forward.tooltip_text = _ ("Fast forward %d seconds".printf (this.settings.fast_forward_seconds));
+            forward.tooltip_text = _ ("Fast forward %d seconds").printf (this.settings.fast_forward_seconds);
             forward.valign = Gtk.Align.CENTER;
             forward.get_style_context ().add_class ("forward-button");
             forward.width_request = 30;
@@ -252,17 +252,17 @@ namespace Vocal {
             if (on_elementary) {
             	backward.relief = Gtk.ReliefStyle.NONE;
         	}
-            backward.tooltip_text = _ ("Rewind %d seconds".printf (this.settings.rewind_seconds));
+            backward.tooltip_text = _ ("Rewind %d seconds").printf (this.settings.rewind_seconds);
             backward.valign = Gtk.Align.START;
             backward.valign = Gtk.Align.CENTER;
             backward.get_style_context ().add_class ("backward-button");
-            
+
             play_pause.get_style_context ().add_class ("vocal-headerbar-button");
 
             // Connect the changed signal for settings to update the tooltips
             this.settings.changed.connect (() => {
-                forward.tooltip_text = _ ("Fast forward %d seconds".printf (this.settings.fast_forward_seconds));
-                backward.tooltip_text = _ ("Rewind %d seconds".printf (this.settings.rewind_seconds));
+                forward.tooltip_text = _ ("Fast forward %d seconds").printf (this.settings.fast_forward_seconds);
+                backward.tooltip_text = _ ("Rewind %d seconds").printf (this.settings.rewind_seconds);
             });
 
             refresh = new Gtk.Button.from_icon_name (
@@ -359,12 +359,12 @@ namespace Vocal {
             left_button_box.pack_start (backward);
             left_button_box.pack_start (play_pause);
             left_button_box.pack_start (forward);
-            
+
             left_button_box.halign = Gtk.Align.START;
             backward.width_request = 40;
             forward.width_request = 40;
             play_pause.width_request = 60;
-            
+
             var right_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
 
             // Populate the toolbar
@@ -374,9 +374,9 @@ namespace Vocal {
             right_button_box.pack_end (download);
             right_button_box.pack_end (new_episodes_button);
             right_button_box.halign = Gtk.Align.END;
-            
+
             this.spacing = 0;
-            
+
             this.pack_start (left_button_box);
             this.set_custom_title (playback_box);
             this.pack_end (right_button_box);

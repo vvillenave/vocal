@@ -115,7 +115,7 @@ namespace Vocal {
             search_entry.max_width_chars = 40;
             search_entry.activate.connect (() => {
                 this.search_term = search_entry.text;
-                title_label.label = _ ("Search Results for <i>%s</i>".printf (search_term));
+                title_label.label = _ ("Search Results for <i>%s</i>").printf (search_term);
         search_entry.grab_focus_without_selecting ();
                 reset ();
                 show_spinner ();

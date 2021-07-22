@@ -36,7 +36,7 @@ namespace Vocal {
         public iTunesProvider itunes = null;
         public PasswordManager password_manager = PasswordManager.get_default_instance ();
         public gpodderClient gpodder_client;
-        
+
         /* Signals */
 
         public signal void track_changed (string episode_title, string podcast_name, string artwork_uri, uint64 duration);
@@ -89,10 +89,10 @@ namespace Vocal {
 
             library = new Library (this);
             library.run_database_update_check ();
-            
+
             info ("Initiating the gpodder API");
             gpodder_client = gpodderClient.get_default_instance (this);
-            
+
             // IMPORTANT NOTE: the player, library, and iTunes provider MUST exist before the MainWindow is created
 
             info ("Initializing the main window.");
@@ -268,7 +268,7 @@ namespace Vocal {
                 info ("Performing library autoclean.");
                 library.autoclean_library ();
             }
-   
+
             info ("Controller initialization finished. Running post-creation sequence.");
             post_creation_sequence ();
         }
@@ -289,9 +289,9 @@ namespace Vocal {
                 window.show_all ();
                 window.switch_visible_page (window.all_scrolled);
             }
-            
+
             // Set up the updating mechanism to trigger every 5 minutes
-            
+
             // Set minutes elapsed to zero since the app is just now starting up
             minutes_elapsed_in_period = 0;
 
@@ -311,28 +311,28 @@ namespace Vocal {
                     return true;
                 });
             }
-            
+
 
         	// Get new subscriptions from gpodder.net
 		    if (!library.empty () && settings.gpodder_username != "") {
 		    	window.show_infobar (_("Checking for new podcast subscriptions from your other devices…"), MessageType.INFO);
 		    	var loop = new MainLoop();
             	gpodder_client.get_subscriptions_list_async.begin ((obj, res) => {
-            	
+
 		                string cloud_subs_opml = gpodder_client.get_subscriptions_list_async.end (res);
             			library.add_from_OPML (cloud_subs_opml, true, true);
-		                
+
 		                // Next, get any episode updates
 		                window.show_infobar (_("Updating episode playback positions from your other devices…"), MessageType.INFO);
 		                gpodder_client.get_episode_updates_async.begin ((obj, res) => {
 
 		                	bool? success = gpodder_client.get_episode_updates_async.end (res);
-		                	
+
 		                	// If necessary, remove podcasts from library that are missing in
 		                	if (settings.gpodder_remove_deleted_podcasts) {
-		                	
+
 		                		window.show_infobar (_("Cleaning up old subscriptions no longer in your gpodder.net account…"), MessageType.INFO);
-		                		
+
 		                		// TODO: use a singleton pattern so there's only one instance
 		                		FeedParser feed_parser = new FeedParser ();
 		                		string[] cloud_feeds = feed_parser.parse_feeds_from_OPML (cloud_subs_opml, true);
@@ -349,15 +349,15 @@ namespace Vocal {
 		                			}
 		                		}
 		                	}
-		                	
+
 		                	// Now update the actual feeds and quit the loop
 						    on_update_request ();
 				            loop.quit();
 		                });
-		                
+
                 });
                 loop.run();
-		    	
+
 	    	} else {
             	on_update_request ();
         	}
@@ -468,7 +468,7 @@ namespace Vocal {
                     window.artwork_popover.set_notes_text (current_episode.description);
                 }
                 window.show_all();
-                
+
                 gpodder_client.update_episode (current_episode, EpisodeAction.PLAY);
 
             }
@@ -503,7 +503,7 @@ namespace Vocal {
             }
 
             window.show_all();
-            
+
             gpodder_client.update_episode (current_episode, EpisodeAction.PLAY);
         }
 
@@ -551,7 +551,7 @@ namespace Vocal {
             window.toolbar.playback_box.hide_volume_button ();
             window.toolbar.hide_playlist_button ();
 
-            window.show_infobar (_ ("Adding new podcast: <b>" + feed + "</b>"), MessageType.INFO);
+            window.show_infobar (_("Adding new podcast: <b>") + feed + "</b>", MessageType.INFO);
             window.toolbar.show_playback_box ();
 
             var loop = new MainLoop ();
@@ -574,10 +574,10 @@ namespace Vocal {
                 window.hide_infobar ();
                 window.toolbar.playback_box.show_artwork_image ();
                 window.toolbar.playback_box.show_volume_button ();
-            
+
             	// Send update to gpodder API if necessary
             	if (settings.gpodder_username != "") {
-            	
+
             		info (_("Uploading subscriptions to gpodder.net."));
 		        	var gpodder_loop = new MainLoop ();
 		        	window.show_infobar (_("Uploading subscriptions to gpodder.net…"), MessageType.INFO);
@@ -588,7 +588,7 @@ namespace Vocal {
 		            });
 		            gpodder_loop.run ();
 	            }
-            	
+
                 window.toolbar.show_playlist_button ();
 
                 if (!player.playing)
@@ -650,7 +650,7 @@ namespace Vocal {
             if (!checking_for_updates) {
 
                 info ("Checking for updates.");
-                
+
                 window.show_infobar ("Checking for updates…", MessageType.INFO);
 
                 checking_for_updates = true;
@@ -694,7 +694,7 @@ namespace Vocal {
                 }
 
                 int new_episode_count = new_episodes.size;
-                
+
                 window.hide_infobar ();
 
                 // Free up the memory from the arraylist
@@ -705,8 +705,8 @@ namespace Vocal {
                     info ("Repopulating views after the update process has finished.");
                     window.populate_views_async ();
                 }
-                
-                
+
+
             } else {
                 info ("Vocal is already checking for updates.");
             }

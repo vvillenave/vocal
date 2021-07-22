@@ -322,8 +322,8 @@ namespace Vocal {
                         );
 
 
-                        msg.add_button ("_No", Gtk.ResponseType.CANCEL);
-                        Gtk.Button delete_button = (Gtk.Button) msg.add_button ("_Yes", Gtk.ResponseType.YES);
+                        msg.add_button (_("_No"), Gtk.ResponseType.CANCEL);
+                        Gtk.Button delete_button = (Gtk.Button) msg.add_button (_("_Yes"), Gtk.ResponseType.YES);
                         delete_button.get_style_context ().add_class ("destructive-action");
 
                         var image = new Gtk.Image.from_icon_name ("dialog-question", Gtk.IconSize.DIALOG);
@@ -421,14 +421,14 @@ namespace Vocal {
                                 Gtk.DialogFlags.MODAL,
                                 Gtk.MessageType.WARNING,
                                 Gtk.ButtonsType.NONE,
-                                "Are you sure you want to delete the downloaded episode '%s'?".printf (
+                                _("Are you sure you want to delete the downloaded episode '%s'?").printf (
                                     podcast.episodes[current_episode_index].title.replace ("%27", "'")
                                 )
                             );
 
 
-                            msg.add_button ("_No", Gtk.ResponseType.CANCEL);
-                            Gtk.Button delete_button = (Gtk.Button) msg.add_button ("_Yes", Gtk.ResponseType.YES);
+                            msg.add_button (_("_No"), Gtk.ResponseType.CANCEL);
+                            Gtk.Button delete_button = (Gtk.Button) msg.add_button (_("_Yes"), Gtk.ResponseType.YES);
                             delete_button.get_style_context ().add_class ("destructive-action");
 
                             var image = new Gtk.Image.from_icon_name ("dialog-question", Gtk.IconSize.DIALOG);
@@ -621,7 +621,7 @@ namespace Vocal {
                 if (this.limit < podcast.episodes.size && !settings.hide_played) {
 
                     // If so, add a button that will increase the limit
-                    var increase_button = new Gtk.Button.with_label ("Show more episodes");
+                    var increase_button = new Gtk.Button.with_label (_("Show more episodes"));
                     increase_button.clicked.connect (() => {
                         populate_episodes (this.limit += 25);
                         this.show_all ();
@@ -684,9 +684,9 @@ namespace Vocal {
         public void set_unplayed_text () {
             string count_string = null;
             if (unplayed_count > 0) {
-                count_string = _ ("%d episodes, %d unplayed".printf (podcast.episodes.size, unplayed_count));
+                count_string = _ ("%d episodes, %d unplayed").printf (podcast.episodes.size, unplayed_count);
             } else {
-                count_string = _ ("%d episodes".printf (podcast.episodes.size));
+                count_string = _ ("%d episodes").printf (podcast.episodes.size);
             }
             count_label.set_text (count_string);
         }
