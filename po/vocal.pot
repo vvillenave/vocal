@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-01 17:15-0500\n"
+"POT-Creation-Date: 2021-07-22 18:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../src/Controller.vala:276 ../src/Widgets/SyncDialog.vala:269
+#: ../src/Controller.vala:318 ../src/Widgets/SyncDialog.vala:269
 msgid "Checking for new podcast subscriptions from your other devices…"
 msgstr ""
 
-#: ../src/Controller.vala:284 ../src/Widgets/SyncDialog.vala:277
+#: ../src/Controller.vala:326 ../src/Widgets/SyncDialog.vala:277
 msgid "Updating episode playback positions from your other devices…"
 msgstr ""
 
-#: ../src/Controller.vala:293 ../src/Widgets/SyncDialog.vala:285
+#: ../src/Controller.vala:334 ../src/Widgets/SyncDialog.vala:285
 msgid "Cleaning up old subscriptions no longer in your gpodder.net account…"
 msgstr ""
 
@@ -45,47 +45,47 @@ msgstr ""
 msgid "Adding new podcast: <b>"
 msgstr ""
 
-#: ../src/Controller.vala:580
+#: ../src/Controller.vala:581
 msgid "Uploading subscriptions to gpodder.net."
 msgstr ""
 
-#: ../src/Controller.vala:582
+#: ../src/Controller.vala:583
 msgid "Uploading subscriptions to gpodder.net…"
 msgstr ""
 
-#: ../src/Controller.vala:629
+#: ../src/Controller.vala:630
 msgid ""
 "Please make sure you selected the correct feed and that it is still "
 "available."
 msgstr ""
 
-#: ../src/Controller.vala:631
+#: ../src/Controller.vala:632
 msgid ""
 "There seems to be a problem with your internet connection. Make sure you are "
 "online and then try again."
 msgstr ""
 
-#: ../src/Controller.vala:636
+#: ../src/Controller.vala:637
 msgid "Error Adding Podcast"
 msgstr ""
 
-#: ../src/Controller.vala:679
+#: ../src/Controller.vala:682
 msgid "Fresh content has been added to your library."
 msgstr ""
 
-#: ../src/Library.vala:758
+#: ../src/Library.vala:790
 msgid "'%s' from '%s' has finished downloading."
 msgstr ""
 
-#: ../src/Library.vala:759
+#: ../src/Library.vala:791
 msgid "Episode Download Complete"
 msgstr ""
 
-#: ../src/Library.vala:764
+#: ../src/Library.vala:796
 msgid "Downloads Complete"
 msgstr ""
 
-#: ../src/Library.vala:764
+#: ../src/Library.vala:796
 msgid "New episodes have been downloaded."
 msgstr ""
 
@@ -187,16 +187,16 @@ msgstr ""
 msgid "Checking for new episodes…"
 msgstr ""
 
-#: ../src/MainWindow.vala:893 ../src/MainWindow.vala:932
+#: ../src/MainWindow.vala:893 ../src/MainWindow.vala:938
 #: ../src/Widgets/PodcastView.vala:802
 msgid "Cancel"
 msgstr ""
 
-#: ../src/MainWindow.vala:894
+#: ../src/MainWindow.vala:894 ../src/MainWindow.vala:939
 msgid "Save"
 msgstr ""
 
-#: ../src/MainWindow.vala:897 ../src/MainWindow.vala:936
+#: ../src/MainWindow.vala:897 ../src/MainWindow.vala:942
 #: ../src/Widgets/PodcastView.vala:806
 msgid "All files"
 msgstr ""
@@ -205,63 +205,57 @@ msgstr ""
 msgid "OPML and XML files"
 msgstr ""
 
-#: ../src/MainWindow.vala:929
-msgid "Select Subscription File"
-msgstr ""
-
-#: ../src/MainWindow.vala:933 ../src/Widgets/PodcastView.vala:803
-msgid "Open"
-msgstr ""
-
-#: ../src/MainWindow.vala:940
+#: ../src/MainWindow.vala:946
 msgid "OPML files"
 msgstr ""
 
-#: ../src/MainWindow.vala:993
+#: ../src/MainWindow.vala:1003
 msgid "Error Importing from File"
 msgstr ""
 
-#: ../src/MainWindow.vala:1112
+#: ../src/MainWindow.vala:1122
 msgid ""
 "Additional plugins are needed to play media. Would you like for Vocal to "
 "install them for you?"
 msgstr ""
 
-#: ../src/MainWindow.vala:1257
+#: ../src/MainWindow.vala:1268
 msgid "Adding feed %d/%d: %s"
 msgstr ""
 
-#: ../src/MainWindow.vala:1268
+#: ../src/MainWindow.vala:1280
 msgid "Are you sure you want to mark all episodes from '%s' as played?"
 msgstr ""
 
-#: ../src/MainWindow.vala:1476
+#: ../src/MainWindow.vala:1488
 msgid "Are you sure you want to remove '%s' from your controller.library?"
 msgstr ""
 
-#: ../src/MainWindow.vala:1480
-msgid "No"
+#: ../src/MainWindow.vala:1492 ../src/Widgets/PodcastView.vala:485
+#: ../src/Widgets/Sidepane.vala:325 ../src/Widgets/Sidepane.vala:430
+msgid "_No"
 msgstr ""
 
-#: ../src/MainWindow.vala:1481
-msgid "Yes"
+#: ../src/MainWindow.vala:1493 ../src/Widgets/PodcastView.vala:486
+#: ../src/Widgets/Sidepane.vala:326 ../src/Widgets/Sidepane.vala:431
+msgid "_Yes"
 msgstr ""
 
-#: ../src/MainWindow.vala:1808
+#: ../src/MainWindow.vala:1820
 msgid ""
 "Vocal is currently downloading episodes. Exiting will cause the downloads to "
 "be canceled. Are you sure you want to exit?"
 msgstr ""
 
-#: ../src/Utils/FeedParser.vala:394
+#: ../src/Utils/FeedParser.vala:402
 msgid "Selected file doesn't appear to contain podcast subscriptions."
 msgstr ""
 
-#: ../src/Utils/FeedParser.vala:406
+#: ../src/Utils/FeedParser.vala:414
 msgid "Selected file seems to be empty."
 msgstr ""
 
-#: ../src/Vocal.vala:59
+#: ../src/Vocal.vala:61
 msgid "translator-credits"
 msgstr ""
 
@@ -504,7 +498,7 @@ msgstr ""
 msgid "Delete Local File"
 msgstr ""
 
-#: ../src/Widgets/PodcastView.vala:553
+#: ../src/Widgets/PodcastView.vala:553 ../src/Widgets/Sidepane.vala:424
 msgid "Are you sure you want to delete the downloaded episode '%s'?"
 msgstr ""
 
@@ -518,6 +512,10 @@ msgstr ""
 
 #: ../src/Widgets/PodcastView.vala:799
 msgid "Select Album Art"
+msgstr ""
+
+#: ../src/Widgets/PodcastView.vala:803
+msgid "Open"
 msgstr ""
 
 #: ../src/Widgets/PodcastView.vala:810
@@ -621,7 +619,7 @@ msgid "Archive.org S3 Secret Key"
 msgstr ""
 
 #: ../src/Widgets/SettingsDialog.vala:286
-msgid "Close"
+msgid "_Close"
 msgstr ""
 
 #: ../src/Widgets/Shownotes.vala:73
@@ -690,6 +688,10 @@ msgstr ""
 
 #: ../src/Widgets/Sidepane.vala:396
 msgid "Mark as Unplayed"
+msgstr ""
+
+#: ../src/Widgets/Sidepane.vala:624
+msgid "Show more episodes"
 msgstr ""
 
 #: ../src/Widgets/Sidepane.vala:634
