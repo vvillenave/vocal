@@ -107,16 +107,16 @@ namespace Vocal {
                 .controls {
                     background-color: #FFF;
                 }
-                
+
                 .play-button {
                 	border-radius: 0px;
                 }
-                
+
                 .forward-button {
                 	border-top-left-radius: 0px;
                 	border-bottom-left-radius: 0px;
                 }
-                
+
                 .backward-button {
                 	border-top-right-radius: 0px;
                 	border-bottom-right-radius: 0px;
@@ -319,7 +319,7 @@ namespace Vocal {
             welcome.append("document-open", _("Import Subscriptions"),
                     _("If you have exported feeds from another podcast manager, import them here."));
             welcome.append("emblem-synchronizing-symbolic", _("Sync With gpodder"), _("Log in to your gpodder.net account and synchronize your library."));
-            
+
             welcome.activated.connect(on_welcome);
             info ("Creating new episodes view.");
             new_episodes_view = new NewEpisodesView (controller);
@@ -461,7 +461,7 @@ namespace Vocal {
             toolbar.new_episodes_button.clicked.connect (() => {
                 switch_visible_page (new_episodes_view);
             });
-            
+
             toolbar.sync_dialog_selected.connect ( () => {
 	    		sync_dialog = new SyncDialog(controller);
                 sync_dialog.show_all ();
@@ -537,7 +537,7 @@ namespace Vocal {
             downloads.all_downloads_complete.connect (toolbar.hide_downloads_menuitem);
 
             info ("Creating queue popover.");
-            
+
             // Create the queue popover
             controller.library.queue_changed.connect (() => {
                 artwork_popover.queue_box.set_queue (controller.library.queue);
@@ -564,15 +564,15 @@ namespace Vocal {
 
             info ("Adding notebook to window.");
             current_widget = notebook;
-            
+
             var main_content_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             infobar = new Gtk.InfoBar();
             main_content_container.pack_start (infobar, false, false, 0);
             main_content_container.pack_start (notebook, true, true, 0);
             this.add (main_content_container);
-            
+
             hide_infobar ();
-            
+
             controller.update_status_changed.connect ( (currently_updating) => {
                 if (currently_updating) {
                     show_infobar (_("Checking for new episodes…"), MessageType.INFO);
@@ -751,7 +751,8 @@ namespace Vocal {
             controller.track_changed (controller.current_episode.title, controller.current_episode.parent.name, controller.current_episode.parent.coverart_uri, (uint64) controller.player.duration);
             toolbar.playback_box.set_artwork_image_image (controller.current_episode.parent.coverart_uri);
             artwork_popover.set_notes_text (controller.current_episode.description);
-            controller.settings.last_played_media = "%s,%s".printf (controller.current_episode.title, controller.current_episode.parent.name);
+            // controller.settings.last_played_media = "%s,%s".printf (controller.current_episode.title, controller.current_episode.parent.name);
+            controller.settings.last_played_media = {controller.current_episode.guid, controller.current_episode.link, controller.current_episode.podcast_uri};
         }
 
         /*
@@ -811,7 +812,7 @@ namespace Vocal {
 
             //  Add the download to the downloads popup
             downloads.add_download(details_box);
-            
+
         }
 
 
@@ -1164,7 +1165,7 @@ namespace Vocal {
             if (details != null && episode.parent == details.podcast) {
                 details.shownotes.hide_download_button ();
             }
-            
+
             // Update gpodder.net
             controller.gpodder_client.update_episode (episode, EpisodeAction.DOWNLOAD);
         }
@@ -1176,7 +1177,7 @@ namespace Vocal {
         private void on_episode_delete_request(Episode episode) {
             controller.library.delete_local_episode(episode);
             details.on_single_delete(episode);
-            
+
             // Update gpodder.net
             controller.gpodder_client.update_episode (controller.get_episode (), EpisodeAction.DELETE);
         }
@@ -1741,7 +1742,7 @@ namespace Vocal {
                 if (controller.player.current_episode.last_played_position != 0)
                     controller.library.set_episode_playback_position (controller.player.current_episode);
             }
-            
+
             // Update gpodder.net if necessary
             controller.gpodder_client.update_episode (controller.get_episode (), EpisodeAction.PLAY);
 
@@ -1787,13 +1788,13 @@ namespace Vocal {
                 on_fullscreen_request ();
             }
         }
-        
+
         public void show_infobar (string message, MessageType type) {
             infobar.set_no_show_all (false);
             infobar.show_all ();
-   
+
             infobar.set_message_type (type);
-            
+
             var content_area = infobar.get_content_area ();
             var old_children = content_area.get_children ();
             foreach (Widget w in old_children) {
@@ -1803,17 +1804,17 @@ namespace Vocal {
             message_label.margin_left = 12;
             message_label.use_markup = true;
             content_area.add (message_label);
-            
+
             infobar.revealed = true;
             infobar.show_all ();
         }
-        
+
         public void hide_infobar () {
             infobar.revealed = false;
             hiding_timer = GLib.Timeout.add (500, () => {
                 infobar.set_no_show_all (true);
                 infobar.hide ();
-                
+
                 return false;
             });
         }

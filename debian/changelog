@@ -1,3 +1,10 @@
+com.github.needleandthread.vocal (2.4.99+nmu1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * Update to latest git branch, including pending PRs.
+
+ -- Vv VV-DEBIAN <vv@vv-debian>  Mon, 27 Sep 2021 14:29:54 +0200
+
 com.github.needleandthread.vocal (2.3.0) xenial; urgency=low
 
   * Updated for elementary OS 5.0 Juno

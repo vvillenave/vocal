@@ -63,7 +63,7 @@ namespace Vocal {
 
         /* References, pointers, and containers */
 
-        private Episode current_episode;
+        public Episode current_episode;
         public Podcast highlighted_podcast;
 
         /* Miscellaneous global variables */
