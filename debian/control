@@ -1,4 +1,4 @@
-Source: com.github.needleandthread.vocal
+Source: vocal
 Section: sound
 Priority: optional
 Maintainer: Nathan Dyer <mail@nathandyer.me>
@@ -23,7 +23,7 @@ Build-recommends:
                libunity-dev
 Standards-Version: 3.9.3
 
-Package: com.github.needleandthread.vocal
+Package: vocal
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Vocal
